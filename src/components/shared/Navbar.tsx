@@ -18,7 +18,7 @@ const Navbar = () => {
             <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
                 {/* logo */}
                 <div className="text-2xl font-bold hover:text-red-700">
-                    <Link href="/">FPL News Portal</Link>
+                    <Link href="/">FPL News </Link>
                 </div>
                 {/* desktop links */}
                 <NavigationMenu className="hidden lg:flex">

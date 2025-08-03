@@ -1,7 +1,10 @@
+import Banner from "@/components/shared/Banner";
 
 
 export default function Home() {
   return (
-    <div>Hello Next JS</div>
+    <div className="py-12">
+      <Banner></Banner>
+    </div>
   );
 }
