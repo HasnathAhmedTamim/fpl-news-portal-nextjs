@@ -1,8 +1,7 @@
 import React from 'react'
-import { Button } from '../ui/button'
-import Link from 'next/link'
+
 import Image from 'next/image'
-import bannerImg from "@/app/assets/banner.png"
+
 const Banner = () => {
   return (
     <div className=''>
@@ -17,8 +16,9 @@ const Banner = () => {
         </div>
 
         <div className=''>
-          
-          <Image src={bannerImg} alt='Banner Image' />
+
+          <Image src='https://i.ibb.co.com/rKXNRCPz/banner.png' alt='Banner Image' width={500} height={300} />
+
         </div>
       </div>
 

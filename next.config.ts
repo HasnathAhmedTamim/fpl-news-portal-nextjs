@@ -2,17 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  // images: {
-  //   remotePatterns: [
-  //     {
-  //       protocol: "https",
-  //       hostname: "resources.premierleague.pulselive.com",
-  //       port: "",
-  //       pathname: "/**",
-  //       search: "",
-  //     },
-  //   ],
-  // },
+  
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;
