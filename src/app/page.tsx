@@ -27,7 +27,7 @@ export default async function Home() {
 
       {/* newsletter */}
       <div className="my-1 items-center justify-center text-center">
-        <h2 className="text-2xl font-bold mb-8">Subscribe to our Newsletter</h2>
+        {/* <h2 className="text-2xl font-bold mb-8">Subscribe to our Newsletter</h2> */}
         <NewsLetter />
       </div>
 
