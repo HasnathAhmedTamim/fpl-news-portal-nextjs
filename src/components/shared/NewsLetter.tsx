@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Mail, CheckCircle, AlertCircle } from 'lucide-react'
+import { Input } from '../ui/input'
 
 interface NewsLetterProps {
   className?: string
@@ -78,7 +79,7 @@ const NewsLetter: React.FC<NewsLetterProps> = ({ className = '' }) => {
 
         <form onSubmit={handleSubmit} className="max-w-md mx-auto">
           <div className="flex flex-col md:flex-row gap-3 items-center">
-            <input
+            <Input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}

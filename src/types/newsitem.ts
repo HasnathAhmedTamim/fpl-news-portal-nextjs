@@ -9,7 +9,7 @@
 //     "image": "https://via.placeholder.com/300x200/87CEEB/000000?text=Haaland+Fit"
 
 // };
-export interface News {
+export interface NewsItem {
   id: number;
   title: string;
   date: string;
@@ -20,5 +20,5 @@ export interface News {
 }
 
 export interface NewsCardProps {
-  item: News;
+  item: NewsItem;
 }

@@ -2,7 +2,8 @@ import Banner from "@/components/shared/Banner";
 
 import NewsCard from "@/components/shared/NewsCard";
 import NewsLetter from "@/components/shared/NewsLetter";
-import { News } from "@/types/news";
+import { NewsItem } from "@/types/newsitem";
+
 
 
 
@@ -19,7 +20,7 @@ export default async function Home() {
         <h2 className="text-2xl font-bold mb-8">Latest News</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {/* <NewsCard /> */}
-            {news.slice(0, 3).map((item: News) => (
+            {news.slice(0, 3).map((item: NewsItem) => (
               <NewsCard key={item?.id} item={item}  />
             ))}
         </div>

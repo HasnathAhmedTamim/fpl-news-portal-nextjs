@@ -2,13 +2,13 @@ import Link from 'next/dist/client/link'
 import Image from 'next/image'
 import React from 'react'
 import { Button } from '../ui/button'
-import { NewsCardProps } from '@/types/news'
+import { NewsCardProps } from '@/types/newsitem'
 
 const NewsCard = ({ item }: NewsCardProps) => {
     return (
         <div className='border p-4 rounded-md shadow-md'>
             <Link href={`/news/${item?.id}`} >
-                <Image className='mb-5 md:h-56 rounded-md hover:scale-105 cursor-pointer  transition-all duration-300' src={item?.image} alt='card Image' width={500} height={500} />
+                <Image className='mb-5 md:h-56 rounded-md hover:scale-105 cursor-pointer  transition-all duration-300' src={item?.image} alt='card Image' width={500} height={500} priority/>
             </Link>
 
             <div>
