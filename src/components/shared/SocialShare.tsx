@@ -1,7 +1,8 @@
 'use client'
 import { IoShareSocial } from 'react-icons/io5'
 import { FaTwitter, FaFacebookF, FaLink } from 'react-icons/fa'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { ThemeContext } from '@/app/context/themeContext'
 
 interface SocialShareProps {
   title: string
@@ -10,6 +11,9 @@ interface SocialShareProps {
 }
 
 const SocialShare = ({ title, url, description }: SocialShareProps) => {
+  const themeContext = useContext(ThemeContext)
+  const isDarkMode = themeContext?.isDarkMode || false
+  
   const [copied, setCopied] = useState(false)
   const [canShare, setCanShare] = useState(false)
 
@@ -56,13 +60,21 @@ const SocialShare = ({ title, url, description }: SocialShareProps) => {
 
   return (
     <div className="flex items-center gap-3">
-      <span className="text-sm text-gray-600 font-medium">Share:</span>
+      <span className={`text-sm font-medium transition-colors duration-200 ${
+        isDarkMode ? 'text-gray-300' : 'text-gray-600'
+      }`}>
+        Share:
+      </span>
       
       {/* Native Share (mobile) */}
       {canShare && (
         <button
           onClick={handleNativeShare}
-          className="flex items-center gap-1 px-3 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors duration-200"
+          className={`flex items-center gap-1 px-3 py-2 text-sm rounded-lg transition-colors duration-200 ${
+            isDarkMode 
+              ? 'bg-gray-700 hover:bg-gray-600 text-white' 
+              : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+          }`}
         >
           <IoShareSocial className="w-4 h-4" />
           Share
@@ -72,7 +84,11 @@ const SocialShare = ({ title, url, description }: SocialShareProps) => {
       {/* Twitter */}
       <button
         onClick={shareToTwitter}
-        className="flex items-center gap-1 px-3 py-2 text-sm bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-lg transition-colors duration-200"
+        className={`flex items-center gap-1 px-3 py-2 text-sm rounded-lg transition-colors duration-200 ${
+          isDarkMode 
+            ? 'bg-blue-800 hover:bg-blue-700 text-blue-200' 
+            : 'bg-blue-100 hover:bg-blue-200 text-blue-700'
+        }`}
       >
         <FaTwitter className="w-4 h-4" />
         Twitter
@@ -92,8 +108,12 @@ const SocialShare = ({ title, url, description }: SocialShareProps) => {
         onClick={copyToClipboard}
         className={`flex items-center gap-1 px-3 py-2 text-sm rounded-lg transition-colors duration-200 ${
           copied 
-            ? 'bg-green-100 text-green-700' 
-            : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+            ? isDarkMode
+              ? 'bg-green-800 text-green-200'
+              : 'bg-green-100 text-green-700'
+            : isDarkMode
+              ? 'bg-gray-700 hover:bg-gray-600 text-gray-300'
+              : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
         }`}
       >
         <FaLink className="w-4 h-4" />

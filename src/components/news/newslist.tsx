@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import fetchNews from '@/lib/fetchNews'
 import { NewsItem } from '@/types/newsitem'
 import NewsCard from '../shared/NewsCard'
@@ -7,8 +7,12 @@ import SearchBar from './SearchBar'
 import SimpleSearchBar from './SimpleSearchBar'
 import CategoryFilter from './CategoryFilter'
 import SimpleCategoryFilter from './SimpleCategoryFilter'
+import { ThemeContext } from '@/app/context/themeContext'
 
 const NewsList = () => {
+    const themeContext = useContext(ThemeContext)
+    const isDarkMode = themeContext?.isDarkMode || false
+    
     // State to hold news items and UI states
     const [news, setNews] = useState<NewsItem[]>([])
     const [search, setSearch] = useState<string>('')
@@ -46,18 +50,28 @@ const NewsList = () => {
     const LoadingSkeleton = () => (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[...Array(6)].map((_, index) => (
-                <div key={index} className="border rounded-lg p-4 animate-pulse">
-                    <div className="bg-gray-300 h-48 w-full rounded mb-4"></div>
-                    <div className="bg-gray-300 h-4 w-3/4 rounded mb-2"></div>
-                    <div className="bg-gray-300 h-4 w-1/2 rounded mb-2"></div>
-                    <div className="bg-gray-300 h-4 w-full rounded"></div>
+                <div key={index} className={`border rounded-lg p-4 animate-pulse transition-colors duration-200 ${
+                    isDarkMode ? 'border-gray-700 bg-gray-800' : 'border-gray-200 bg-white'
+                }`}>
+                    <div className={`h-48 w-full rounded mb-4 transition-colors duration-200 ${
+                        isDarkMode ? 'bg-gray-700' : 'bg-gray-300'
+                    }`}></div>
+                    <div className={`h-4 w-3/4 rounded mb-2 transition-colors duration-200 ${
+                        isDarkMode ? 'bg-gray-700' : 'bg-gray-300'
+                    }`}></div>
+                    <div className={`h-4 w-1/2 rounded mb-2 transition-colors duration-200 ${
+                        isDarkMode ? 'bg-gray-700' : 'bg-gray-300'
+                    }`}></div>
+                    <div className={`h-4 w-full rounded transition-colors duration-200 ${
+                        isDarkMode ? 'bg-gray-700' : 'bg-gray-300'
+                    }`}></div>
                 </div>
             ))}
         </div>
     )
 
     return (
-        <div className="min-h-screen">
+        <div className={`min-h-screen transition-colors duration-200 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
             <div className='flex flex-col md:flex-row justify-between items-start mb-8 gap-4 md:gap-12'>
                 <SearchBar onSearch={setSearch} />
                 <CategoryFilter onCategoryChange={setCategory} />
@@ -65,7 +79,11 @@ const NewsList = () => {
             
             {/* Error state */}
             {error && (
-                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-6">
+                <div className={`border px-4 py-3 rounded mb-6 transition-colors duration-200 ${
+                    isDarkMode 
+                        ? 'bg-red-900/20 border-red-800 text-red-400' 
+                        : 'bg-red-50 border-red-200 text-red-700'
+                }`}>
                     <p className="font-semibold">Error</p>
                     <p>{error}</p>
                 </div>
@@ -85,11 +103,17 @@ const NewsList = () => {
                         </div>
                     ) : (
                         <div className="text-center py-12">
-                            <div className="text-gray-400 text-6xl mb-4">📰</div>
-                            <h3 className="text-lg font-semibold text-gray-600 mb-2">
+                            <div className={`text-6xl mb-4 transition-colors duration-200 ${
+                                isDarkMode ? 'text-gray-600' : 'text-gray-400'
+                            }`}>📰</div>
+                            <h3 className={`text-lg font-semibold mb-2 transition-colors duration-200 ${
+                                isDarkMode ? 'text-gray-300' : 'text-gray-600'
+                            }`}>
                                 No news found
                             </h3>
-                            <p className="text-gray-500">
+                            <p className={`transition-colors duration-200 ${
+                                isDarkMode ? 'text-gray-400' : 'text-gray-500'
+                            }`}>
                                 {search ? 
                                     `No results found for "${search}". Try different keywords.` : 
                                     'No news articles available at the moment.'

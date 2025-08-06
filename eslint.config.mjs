@@ -22,8 +22,6 @@ const eslintConfig = [
       semi: ["error", "always"],
       // Other rules can be added as needed
 
-      "react/no-unescaped-entities": "off",
-      "@next/next/no-page-custom-font": "off",
     },
   },
 ];
