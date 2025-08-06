@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Mail, CheckCircle, AlertCircle } from 'lucide-react'
-import { Input } from '../ui/input'
+import { Input } from '@/components/ui/input'
+import { MdEmail, MdCheckCircle, MdError } from 'react-icons/md'
 
 interface NewsLetterProps {
   className?: string
@@ -63,7 +63,7 @@ const NewsLetter: React.FC<NewsLetterProps> = ({ className = '' }) => {
       <div className="max-w-4xl mx-auto text-center">
         <div className="mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-full mb-6">
-            <Mail className="w-8 h-8 text-white" />
+            <MdEmail className="w-8 h-8 text-white" />
           </div>
           
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -118,9 +118,9 @@ const NewsLetter: React.FC<NewsLetterProps> = ({ className = '' }) => {
                             : 'bg-red-500/20 text-red-100 border border-red-400/30'
                           }`}>
               {status === 'success' ? (
-                <CheckCircle className="w-4 h-4 flex-shrink-0" />
+                <MdCheckCircle className="w-4 h-4 flex-shrink-0" />
               ) : (
-                <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                <MdError className="w-4 h-4 flex-shrink-0" />
               )}
               <span>{message}</span>
             </div>

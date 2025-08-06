@@ -11,7 +11,7 @@ import MobileMenu from "./MobileMenu"
 
 
 const Navbar = () => {
-    let pathname = usePathname();
+    const pathname = usePathname();
 
     return (
         <header className="py-4  shadow-md">

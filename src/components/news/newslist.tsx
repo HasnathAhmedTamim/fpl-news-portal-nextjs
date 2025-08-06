@@ -6,6 +6,7 @@ import NewsCard from '../shared/NewsCard'
 import SearchBar from './SearchBar'
 import SimpleSearchBar from './SimpleSearchBar'
 import CategoryFilter from './CategoryFilter'
+import SimpleCategoryFilter from './SimpleCategoryFilter'
 
 const NewsList = () => {
     // State to hold news items and UI states

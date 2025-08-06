@@ -8,7 +8,9 @@ import { NewsItem } from "@/types/newsitem";
 
 
 export default async function Home() {
-  const data = await fetch("https://fpl-news-api.vercel.app/api/latest-news");
+  const data = await fetch("https://fpl-news-api.vercel.app/api/latest-news",{
+    cache: "force-cache",
+  });
   const news = await data.json();
   // console.log(news);
   return (

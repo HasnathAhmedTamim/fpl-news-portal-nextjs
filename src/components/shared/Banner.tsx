@@ -17,7 +17,7 @@ const Banner = () => {
 
         <div className=''>
 
-          <Image src='https://i.ibb.co.com/rKXNRCPz/banner.png' alt='Banner Image' width={500} height={300} />
+          <Image src='https://i.ibb.co.com/rKXNRCPz/banner.png' alt='Banner Image'  width={500} height={500} priority />
 
         </div>
       </div>

@@ -25,7 +25,21 @@ const fetchNews = async (category: string = "", search: string = "") => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     
-    const data = await response.json();
+    // Check if response has content before trying to parse JSON
+    const text = await response.text();
+    if (!text || text.trim() === '') {
+      console.warn('Empty response from API');
+      return [];
+    }
+    
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch (parseError) {
+      console.error('JSON parsing error:', parseError);
+      console.error('Response text:', text);
+      return [];
+    }
     
     // Ensure we always return an array
     let newsArray = [];
